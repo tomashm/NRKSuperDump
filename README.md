@@ -23,4 +23,4 @@ Use for example:
 + http://tv.nrksuper.no/serie/blekksprut
 + http://tv.nrksuper.no/serie/georg-krymp
 
-![](http://gfx.nrk.no/w2B35ajFUfat5AXiX4VVRQpIkiMxs77gtFMEN4XNO9fw =150x)
+![](http://gfx.nrk.no/w2B35ajFUfat5AXiX4VVRQpIkiMxs77gtFMEN4XNO9fw "Georg Krymp")
