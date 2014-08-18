@@ -34,7 +34,14 @@ class NRKSuperDump(object):
 		m_url = link.get('data-hls-media')
 		d_url = m_url.replace('master.m3u8','index_4_av.m3u8?null=')
 		title = webpage.title.text + '.mkv'
-		subprocess.call(['avconv', '-i', d_url, '-c', 'copy', title], stdout=FNULL, stderr=subprocess.STDOUT)
+		
+		# Check if clip already exists on drive
+		if os.path.isfile(title):
+			print 'clip has already been downloaded..'
+			return
+		else: 			
+			# Download clip
+			subprocess.call(['avconv', '-i', d_url, '-c', 'copy', title], stdout=FNULL, stderr=subprocess.STDOUT)
 
 	def json_to_dict(self, jdata):
 		'''Extracts the needed information from the json and builds a dict
@@ -79,6 +86,7 @@ class NRKSuperDump(object):
 			print 'Could not open output directory: ' + folder + ', creating it instead'
 			os.mkdir(os.path.join(DOWNLOAD_PATH, folder), 0755)
 			os.chdir(os.path.join(DOWNLOAD_PATH, folder))
+
 		
 if __name__ == '__main__':
 	# Construct an instance of the class and 
