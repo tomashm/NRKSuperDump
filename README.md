@@ -6,9 +6,11 @@ Require Python2, BeautifulSoup, Requests and libav-tools to be installed
 
 Install them as follows:
 
+```bash
 $ sudo apt-get install libav-tools
 $ sudo pip install BeautifulSoup4
 $ sudo pip install Requests
+```
 
 HOW TO USE IT:
 -------
