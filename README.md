@@ -16,12 +16,12 @@ HOW TO USE IT:
 -------
 Run the script as:
 
-```python
+```bash
 $ python dumper.py
 ```
 You will then be requested to enter a full URL to a NRK Super TV series:
 
-```python
+```bash
 Enter URL to extract clips from (ex. http://tv.nrksuper.no/serie/bien-maja): 
 ```
 
