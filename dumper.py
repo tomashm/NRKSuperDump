@@ -18,7 +18,8 @@ import requests, json, urllib2, urlparse, os, subprocess
 from time import sleep
 
 USER_AGENT = 'Python/2.7, Python CLI Stream App/0.1'
-DOWNLOAD_PATH = '/home/orjanv/Videoklipp'
+USER_HOME = os.getenv('HOME')
+DOWNLOAD_PATH = USER_HOME + '/NRKSuperVideos'
 
 class NRKSuperDump(object):
 	def __init__(self):
@@ -33,14 +34,15 @@ class NRKSuperDump(object):
 		link = webpage.find("div", { "id" : "playerelement" })
 		m_url = link.get('data-hls-media')
 		d_url = m_url.replace('master.m3u8','index_4_av.m3u8?null=')
-		title = webpage.title.text + '.mkv'
+		temp_title = webpage.title.text + '.mkv'
+		title = temp_title.replace('NRK Super TV - ','')
 		
 		# Check if clip already exists on drive
 		if os.path.isfile(title):
 			print 'clip has already been downloaded..'
 			return
 		else: 			
-			# Download clip
+			# Download clip and convert to MP4
 			subprocess.call(['avconv', '-i', d_url, '-c', 'copy', title], stdout=FNULL, stderr=subprocess.STDOUT)
 
 	def json_to_dict(self, jdata):
@@ -56,7 +58,7 @@ class NRKSuperDump(object):
 	def get_json(self, webpage, domain):
 		'''Get the json file based on the input webpage
 		'''
-		data_url = webpage.find("div", { "class" : "season-tab tab-panel active" })
+		data_url = webpage.find("div", { "class" : "season-episodes loading" })
 		json_url = 'http://' + domain + data_url.get('data-url')
 		req = urllib2.Request(json_url, headers={'User-Agent': USER_AGENT})
 		response = urllib2.urlopen(req)
@@ -83,7 +85,13 @@ class NRKSuperDump(object):
 		try:
 			os.chdir(os.path.join(DOWNLOAD_PATH, folder))
 		except OSError:
-			print 'Could not open output directory: ' + folder + ', creating it instead'
+			try:
+				os.chdir(os.path.join(DOWNLOAD_PATH))
+			except OSError:
+				print 'Could not open main directory: ' + DOWNLOAD_PATH + ', creating it'
+				os.mkdir(os.path.join(DOWNLOAD_PATH), 0755)
+				os.chdir(os.path.join(DOWNLOAD_PATH))
+			print 'Could not open output directory: ' + folder + ', creating it'
 			os.mkdir(os.path.join(DOWNLOAD_PATH, folder), 0755)
 			os.chdir(os.path.join(DOWNLOAD_PATH, folder))
 

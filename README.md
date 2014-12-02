@@ -1,9 +1,16 @@
 NRKSuperDump
 ============
 
-Python script to download 1280x720 Matroska videos from NRK based on web url. 
+Python script to download 1280x720 Matroska videos from NRK based on web url
+Require Python2, BeautifulSoup, Requests and libav-tools to be installed
 
-HOW TO:
+Install them as follows:
+
+$ sudo apt-get install libav-tools
+$ sudo pip install BeautifulSoup4
+$ sudo pip install Requests
+
+HOW TO USE IT:
 -------
 Run the script as:
 
@@ -22,5 +29,7 @@ Use for example:
 + http://tv.nrksuper.no/serie/alle-vi-barna-i-bakkebygrenda
 + http://tv.nrksuper.no/serie/blekksprut
 + http://tv.nrksuper.no/serie/georg-krymp
++ http://tv.nrksuper.no/serie/jul-i-skomakergata
 
-![](http://gfx.nrk.no/w2B35ajFUfat5AXiX4VVRQpIkiMxs77gtFMEN4XNO9fw "Georg Krymp")
+![](http://gfx.nrk.no/8sRT_QPaVu33e0-D0PtokwI4jkvXS9yXoyKGrggZeuiw "Jul i skomakergata")
+
