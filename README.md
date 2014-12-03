@@ -35,3 +35,8 @@ Use for example:
 
 ![](http://gfx.nrk.no/8sRT_QPaVu33e0-D0PtokwI4jkvXS9yXoyKGrggZeuiw "Jul i skomakergata")
 
+FEATURES TO COME
+----------------
+
++ Parameter for running in batch mode, with textfile containing lines of urls as parameter
++ Parameter for choosing download format and quality
