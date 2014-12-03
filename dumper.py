@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-Python script to download 1280x720 Matroska videos from NRK based on web url
+Python script to download videos from NRK based on web url
 Require Python2, BeautifulSoup, Requests and libav-tools to be installed
 
 Install them as follows:
@@ -33,8 +33,8 @@ class NRKSuperDump(object):
 		webpage = bs(response.text)
 		link = webpage.find("div", { "id" : "playerelement" })
 		m_url = link.get('data-hls-media')
-		d_url = m_url.replace('master.m3u8','index_4_av.m3u8?null=')
-		temp_title = webpage.title.text + '.mkv'
+		d_url = m_url.replace('master.m3u8','index_3_av.m3u8?null=') # index 4 is matroska, while index 3 is mp4
+		temp_title = webpage.title.text + '.mp4'
 		title = temp_title.replace('NRK Super TV - ','')
 		
 		# Check if clip already exists on drive
@@ -42,7 +42,7 @@ class NRKSuperDump(object):
 			print 'clip has already been downloaded..'
 			return
 		else: 			
-			# Download clip and convert to MP4
+			# Download clip
 			subprocess.call(['avconv', '-i', d_url, '-c', 'copy', title], stdout=FNULL, stderr=subprocess.STDOUT)
 
 	def json_to_dict(self, jdata):

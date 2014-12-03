@@ -1,7 +1,7 @@
 NRKSuperDump
 ============
 
-Python script to download 1280x720 Matroska videos from NRK based on web url
+Python script to download MP4 videos from NRK based on web url
 Require Python2, BeautifulSoup, Requests and libav-tools to be installed
 
 Install them as follows:
