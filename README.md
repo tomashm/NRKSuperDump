@@ -40,3 +40,6 @@ FEATURES TO COME
 
 + Parameter for running in batch mode, with textfile containing lines of urls as parameter
 + Parameter for choosing download format and quality
++ Understanding urls better, for example if the url given is a single program and not a serie
+..* http://tv.nrksuper.no/program/FBUI50002800/historien-om-den-foerste-paasken
++ What if there are multiple seasons?
