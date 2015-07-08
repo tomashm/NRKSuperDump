@@ -50,8 +50,8 @@ class NRKSuperDump(object):
 		'''
 		ddata = {}
 		key = 1
-		for k in jdata['Data']:
-			ddata[k['FullTitle']] = (k['Url'], k['Title'], k['AvailabilityText'], key)
+		for k in jdata['data']:
+			ddata[k['fullTitle']] = (k['url'], k['title'], k['availabilityText'], key)
 			key = key + 1
 		return ddata
 
